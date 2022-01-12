@@ -1,0 +1,32 @@
+.login-page {
+  height: 100%;
+  background-color: transparent;
+  background-image: linear-gradient(190deg, #6bd12f 25%, #8de528 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-page__card {
+  background-color: #fff;
+  width: 80%;
+  height: 80%;
+  display: flex;
+}
+.login-page__anthor {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #242424;
+}
+
+.login-page__anthor img {
+  width: 40%;
+}
+
+.login-page__form-container {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
