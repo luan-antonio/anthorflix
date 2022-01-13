@@ -261,7 +261,7 @@ export default () => {
         </div>
         <div className="signin-page__form-container">
           <Stack spacing={2} width={"80%"}>
-            <h3>Log in</h3>
+            <h3>Sign in</h3>
             <TextField
               id="name"
               label="* Nome"
@@ -319,13 +319,13 @@ export default () => {
               onBlur={handleBlurConfirmPassword}
             />
             <Button
-              variant="contained"
+              variant={signinLoad ? "outlined" : "contained"}
               margin="dense"
               disabled={disableFormSubmit}
               onClick={signin}
             >
               {signinLoad ? (
-                <CircularProgress size={24} thickness={4} />
+                <CircularProgress size={24} thickness={4}/>
               ) : (
                 "Registrar-se"
               )}

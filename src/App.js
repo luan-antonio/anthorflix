@@ -6,7 +6,7 @@ import AnthorflixAPI from "./AnthorflixAPI";
 
 import "./app.css";
 
-import { Login, Signin } from "./pages";
+import { Login, Signin, Home } from "./pages";
 
 const theme = createTheme({
   palette: {
@@ -27,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login theme={theme}/>}></Route>
             <Route path="/signin" element={<Signin theme={theme}/>}></Route>
+            <Route path="/" element={<Home theme={theme}/>}></Route>
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

@@ -1,6 +1,9 @@
 export default class AnthorflixAPI {
   constructor() {
     this.API_BASE = "http://localhost:3001";
+    this.headers = {
+      "Content-Type": "application/json",
+    };
   }
 
   async basicFetch(endpoint, fetchOptions) {
@@ -8,6 +11,16 @@ export default class AnthorflixAPI {
     const res = { json: await req.json(), status: req.status };
     return res;
   }
+
+  setTokenOnHeaders(token) {
+    this.token = token;
+    this.headers = {
+      ...this.headers,
+      "authorization": this.token
+    }
+  }
+
+
 
   async getHomeList() {
     return [
@@ -21,11 +34,17 @@ export default class AnthorflixAPI {
   async register({ name, email, password, confirmPassword }) {
     const res = await this.basicFetch("/auth/register", {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this.headers,
       body: JSON.stringify({ name, email, password, confirmPassword }),
+    });
+    return res;
+  }
+
+  async login({ email, password }) {
+    const res = await this.basicFetch("/auth/login", {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify({ email, password }),
     });
     return res;
   }
