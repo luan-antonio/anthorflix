@@ -62,10 +62,10 @@ export default ({ movies }) => {
                         ? movie.poster_path
                         : "/movie-placeholder.jpg"
                     }
-                    alt={movie.original_title}
+                    alt={movie.originalTitle}
                   />
                   <div className="movie-row__movie-title">
-                    <p>{movie.title}</p>
+                    <p>{movie.title || movie.originalTitle}</p>
                   </div>
                 </div>
               );

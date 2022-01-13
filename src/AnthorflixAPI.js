@@ -1,9 +1,6 @@
 export default class AnthorflixAPI {
   constructor() {
     this.API_BASE = "http://localhost:3001";
-    this.headers = {
-      "Content-Type": "application/json",
-    };
   }
 
   async basicFetch(endpoint, fetchOptions) {
@@ -12,25 +9,17 @@ export default class AnthorflixAPI {
     return res;
   }
 
-  setTokenOnHeaders(token) {
-    this.token = token;
-    this.headers = {
-      ...this.headers,
-      "authorization": this.token
-    }
-  }
-
-
-
   async getHomeList() {
-    const res = await this.basicFetch("/movies")
+    const res = await this.basicFetch("/movies");
     return res;
   }
 
   async register({ name, email, password, confirmPassword }) {
     const res = await this.basicFetch("/auth/register", {
       method: "POST",
-      headers: this.headers,
+      headers: {
+        "Content-Type": 'application/json',
+      },
       body: JSON.stringify({ name, email, password, confirmPassword }),
     });
     return res;
@@ -39,8 +28,24 @@ export default class AnthorflixAPI {
   async login({ email, password }) {
     const res = await this.basicFetch("/auth/login", {
       method: "POST",
-      headers: this.headers,
+      headers: {
+        "Content-Type": 'application/json',
+      },
       body: JSON.stringify({ email, password }),
+    });
+    console.log(res)
+    return res;
+  }
+
+  async addMovie(payload) {
+    console.log(payload);
+    const res = await this.basicFetch("/movies/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": 'application/json',
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(payload),
     });
     return res;
   }

@@ -138,7 +138,6 @@ export default () => {
       const res = await anthor.login(payload);
       if (res.status === 200) {
         sessionStorage.setItem('token', res.json.token);
-        anthor.setTokenOnHeaders();
         navigate("/");
       } else {
         setState({

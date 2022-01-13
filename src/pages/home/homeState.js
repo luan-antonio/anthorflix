@@ -1,3 +1,7 @@
 export default {
-    movieList: []
-}
+  movieList: [],
+  modal: false,
+  disabledOK: true,
+  disabledCancel: false,
+  nameError: false,
+};
