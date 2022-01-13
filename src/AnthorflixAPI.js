@@ -33,12 +33,10 @@ export default class AnthorflixAPI {
       },
       body: JSON.stringify({ email, password }),
     });
-    console.log(res);
     return res;
   }
 
   async addMovie(payload) {
-    console.log(payload);
     const res = await this.basicFetch("/movies/add", {
       method: "POST",
       headers: {

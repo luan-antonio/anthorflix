@@ -30,7 +30,6 @@ export default () => {
   useEffect(() => {
     const getMovieInfo = async () => {
       const res = await anthor.getMovieInfo(movieId);
-      console.log(res);
       if (res.status === 200) {
         setMovieInfo(res.json);
       }
