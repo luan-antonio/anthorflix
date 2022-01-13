@@ -5,8 +5,8 @@ export default class AnthorflixAPI {
 
   async basicFetch(endpoint, fetchOptions) {
     const req = await fetch(`${this.API_BASE}${endpoint}`, fetchOptions);
-    const json = await req.json();
-    return json;
+    const res = { json: await req.json(), status: req.status };
+    return res;
   }
 
   async getHomeList() {
@@ -16,5 +16,17 @@ export default class AnthorflixAPI {
         items: await this.basicFetch("/movies"),
       },
     ];
+  }
+
+  async register({ name, email, password, confirmPassword }) {
+    const res = await this.basicFetch("/auth/register", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password, confirmPassword }),
+    });
+    return res;
   }
 }

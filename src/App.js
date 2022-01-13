@@ -6,17 +6,17 @@ import AnthorflixAPI from "./AnthorflixAPI";
 
 import "./app.css";
 
-import { Login } from "./pages";
+import { Login, Signin } from "./pages";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: "#96d518",
+      dark: "#62a300",
+      light: "#cbff57"
     },
   },
 });
-
-console.log(theme);
 function App() {
   const anthor = new AnthorflixAPI();
 
@@ -25,7 +25,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
-            <Route path="login" element={<Login />}></Route>
+            <Route path="/login" element={<Login theme={theme}/>}></Route>
+            <Route path="/signin" element={<Signin theme={theme}/>}></Route>
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
