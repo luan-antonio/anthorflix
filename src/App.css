@@ -2,11 +2,14 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
 body {
+    background-color: #62a300;
+    color: #fff;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 .app {

@@ -23,12 +23,8 @@ export default class AnthorflixAPI {
 
 
   async getHomeList() {
-    return [
-      {
-        title: "Filmes",
-        items: await this.basicFetch("/movies"),
-      },
-    ];
+    const res = await this.basicFetch("/movies")
+    return res;
   }
 
   async register({ name, email, password, confirmPassword }) {

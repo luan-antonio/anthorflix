@@ -1,3 +1,37 @@
+import React, { useState, useEffect } from "react";
+
+import AnthorflixAPI from "../../AnthorflixAPI";
+import MovieRow from "../../components/MovieRow";
+
+import homeState from "./homeState";
+import "./home.css"
 export default () => {
-    return <h1>Home page</h1>
-}
+  const anthor = new AnthorflixAPI();
+  const [{ movieList }, setValues] = useState(homeState);
+
+  const getState = () => {
+    return {
+      movieList,
+    };
+  };
+
+  useEffect(() => {
+    const loadAll = async () => {
+      const res = await anthor.getHomeList();
+      setValues({
+        ...getState(),
+        movieList: res.json,
+      });
+    };
+
+    loadAll();
+  }, []);
+
+  return (
+    <div className="homepage">
+      <section className="lists">
+        <MovieRow movies={movieList}></MovieRow>
+      </section>
+    </div>
+  );
+};
