@@ -158,12 +158,12 @@ export default () => {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-page__card">
-        <div className="login-page__anthor">
+    <div className="loginpage">
+      <div className="loginpage__card">
+        <div className="loginpage__anthor">
           <img src="/anthor-logo.png"></img>
         </div>
-        <div className="login-page__form-container">
+        <div className="loginpage__form-container">
           <Stack spacing={2} width={"80%"}>
             <h3>Log in</h3>
             <TextField

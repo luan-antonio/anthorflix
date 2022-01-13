@@ -49,4 +49,9 @@ export default class AnthorflixAPI {
     });
     return res;
   }
+
+  async getMovieInfo(movieId) {
+    const res = await this.basicFetch(`/movies/${movieId}`);
+    return res;
+  }
 }

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { useNavigate } from "react-router-dom";
+
 
 import "./MovieRow.css";
 import movieRowState from "./movieRowState";
 
 export default ({ movies }) => {
   const [{ scrollX }, setState] = useState(movieRowState);
+  const navigate = useNavigate();
 
   const getState = () => {
     return {
@@ -40,6 +43,10 @@ export default ({ movies }) => {
     });
   };
 
+  const handleMovieClick = (movie) => {
+    navigate(`/movie?id=${movie._id}`)
+  }
+
   return (
     <div className="movie-row">
       <div className="movie-row__left" onClick={handleLeftArrow}>
@@ -55,7 +62,7 @@ export default ({ movies }) => {
           {movies.length > 0 &&
             movies.map((movie) => {
               return (
-                <div className="movie-row__movie" key={movie._id}>
+                <div className="movie-row__movie" onClick={() => {handleMovieClick(movie)}} key={movie._id}>
                   <img
                     src={
                       movie.poster_path
