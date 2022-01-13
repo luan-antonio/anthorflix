@@ -31,4 +31,5 @@
   align-items: center;
   color: black;
   flex-direction: column;
+  position: relative;
 }

@@ -18,7 +18,7 @@ export default class AnthorflixAPI {
     const res = await this.basicFetch("/auth/register", {
       method: "POST",
       headers: {
-        "Content-Type": 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, email, password, confirmPassword }),
     });
@@ -29,11 +29,11 @@ export default class AnthorflixAPI {
     const res = await this.basicFetch("/auth/login", {
       method: "POST",
       headers: {
-        "Content-Type": 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     });
-    console.log(res)
+    console.log(res);
     return res;
   }
 
@@ -42,7 +42,7 @@ export default class AnthorflixAPI {
     const res = await this.basicFetch("/movies/add", {
       method: "POST",
       headers: {
-        "Content-Type": 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
       body: JSON.stringify(payload),
@@ -52,6 +52,16 @@ export default class AnthorflixAPI {
 
   async getMovieInfo(movieId) {
     const res = await this.basicFetch(`/movies/${movieId}`);
+    return res;
+  }
+  async deleteMovie(movieId) {
+    const res = await this.basicFetch(`/movies/${movieId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+    });
     return res;
   }
 }
