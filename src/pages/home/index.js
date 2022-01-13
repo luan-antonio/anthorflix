@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import AnthorflixAPI from "../../AnthorflixAPI";
 import MovieRow from "../../components/MovieRow";
+import Header from '../../components/Header';
 
 import homeState from "./homeState";
 import "./home.css"
@@ -29,6 +30,7 @@ export default () => {
 
   return (
     <div className="homepage">
+      <Header/>
       <section className="lists">
         <MovieRow movies={movieList}></MovieRow>
       </section>
